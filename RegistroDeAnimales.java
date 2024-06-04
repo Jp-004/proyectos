@@ -8,31 +8,15 @@ public class RegistroDeAnimales {
     }
 
     public void agregarAnimal(String animal) {
-        /**
-         * Agrega un animal al registro.
-         * 
-         * @param animal Nombre del animal a agregar
-         */
+        //Agrega un animal a la lista
+        if(animal == null)
+            throw new IllegalArgumentException("El nombre del animal no es valido");  
         registro.add(animal);
     }
 
     public ArrayList<String> listarAnimales() {
-        /**
-         * Lista todos los animales en el registro.
-         * 
-         * @return Lista de nombres de animales
-         */
+        //Lista todos los animales del registro
         return new ArrayList<>(registro);
-    }
-
-    public boolean buscarAnimal(String nombre) {
-        /**
-         * Busca un animal por su nombre en el registro.
-         * 
-         * @param nombre Nombre del animal a buscar
-         * @return true si el animal está en el registro, false de lo contrario
-         */
-        return registro.contains(nombre);
     }
 
     public boolean eliminarAnimal(String nombre) {
@@ -72,8 +56,6 @@ public class RegistroDeAnimales {
         registro.agregarAnimal("Perro");
         registro.agregarAnimal("Gato");
         System.out.println(registro.listarAnimales()); // [Perro, Gato]
-        System.out.println(registro.buscarAnimal("Perro")); // true
-        System.out.println(registro.buscarAnimal("Conejo")); // false
         System.out.println(registro.eliminarAnimal("Gato")); // true
         System.out.println(registro.listarAnimales()); // [Perro]
         System.out.println(registro.actualizarAnimal("Perro", "Canino")); // TODO: Implementar para que retorne true
