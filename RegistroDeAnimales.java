@@ -1,5 +1,12 @@
 import java.util.ArrayList;
 
+/**
+ *La clase RegistroDeAnimales administra un registro de nombres de animales.
+ *Implementa metodos para agregar, listar, eliminar y actualizar los nombres de animales en un registro interno. 
+ *@autor J.Pereno
+ *@version 1.1.2
+ */
+
 public class RegistroDeAnimales {
     private ArrayList<String> registro;
 
