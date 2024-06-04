@@ -27,45 +27,25 @@ public class RegistroDeAnimales {
     }
 
     public boolean eliminarAnimal(String nombre) {
-        /**
-         * Elimina un animal del registro.
-         * 
-         * @param nombre Nombre del animal a eliminar
-         * @return true si el animal fue eliminado, false si no se encontró el animal
-         */
+        //Verifica que el nombre ingresado no sea null
+        if(nombre == null)
+            throw new IllegalArgumentException("El nombre del animal no debe ser nulo");
+        
         return registro.remove(nombre);
     }
 
     public boolean actualizarAnimal(String nombreActual, String nuevoNombre) {
-        /**
-         * Actualiza el nombre de un animal en el registro.
-         * 
-         * Precondiciones:
-         * - nombreActual debe existir en el registro.
-         * - nuevoNombre no debe estar vacío.
-         * 
-         * Postcondiciones:
-         * - El nombre del animal será actualizado en el registro.
-         * 
-         * @param nombreActual Nombre actual del animal
-         * @param nuevoNombre Nuevo nombre para el animal
-         * @return true si el nombre fue actualizado, false si nombreActual no se encontró
-         */
-        // TODO: Implementar este método
-        // Buscar el animal por nombreActual en el registro
-        // Si se encuentra, actualizar su nombre a nuevoNombre
-        // Retornar true si la actualización fue exitosa, de lo contrario retornar false
-        return false; // Retorno temporal
+        if(nuevoNombre == null) 
+            throw new IllegalArgumentException("El nuevo nombre del animal no debe ser nulo");
+            
+        boolean actualizado = false;
+        for(int i = 0; i < registro.size(); i++) {
+            if(registro.get(i).equals(nombreActual)){
+                registro.set(i, nuevoNombre);
+                actualizado = true;
+            }
+        }
+        return actualizado;
     }
 
-    public static void main(String[] args) {
-        RegistroDeAnimales registro = new RegistroDeAnimales();
-        registro.agregarAnimal("Perro");
-        registro.agregarAnimal("Gato");
-        System.out.println(registro.listarAnimales()); // [Perro, Gato]
-        System.out.println(registro.eliminarAnimal("Gato")); // true
-        System.out.println(registro.listarAnimales()); // [Perro]
-        System.out.println(registro.actualizarAnimal("Perro", "Canino")); // TODO: Implementar para que retorne true
-        System.out.println(registro.listarAnimales()); // TODO: Implementar para que muestre [Canino]
-    }
 }
