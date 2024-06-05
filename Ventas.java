@@ -1,4 +1,4 @@
- 
+
 /**
  * La clase Ventas tiene la funcion de gestionar las ventas de productos a lo largo de un anho.
  * Calcula las ganancias mensuales basadas en el precio del producto y la cantidad de ventas por dia.
@@ -32,6 +32,15 @@ public class Ventas {
      */
     public void registrarVenta(int cantidad) {
         //Implementar metodo
+        if(cantidad < 0)
+         throw new IllegalArgumentException("La cantidad de productos vendidos no puede ser negativa");
+         
+        if(diaActual < MAX_DIAS) {
+            ventasPorDia[diaActual] = cantidad;
+            diaActual++;
+        } else if(diaActual == MAX_DIAS) {
+            calcularGanancias();
+            } 
     }
 
     /**
@@ -40,6 +49,20 @@ public class Ventas {
      */
     private void calcularGanancias() {
         //Implementar metodo
+        if(diaActual != MAX_DIAS)
+            throw new IllegalArgumentException("Las ganancias solo se pueden calcular al final del mes");
+            
+        int suma = 0;
+        for(int i = 0; i < ventasPorDia.length; i++) {
+            suma += ventasPorDia[i];
+        }
+        if(suma != 0) {
+            gananciasPorMes[mesActual] = suma * precioProducto;
+            mesActual++;
+            reiniciarVentas();
+        } 
+        
+        
     }
 
     /**
@@ -47,7 +70,10 @@ public class Ventas {
      */
     public float obtenerGanancias(int mes) {
         //Implementar metodo
-        return 0;
+        if(mes < 0)
+            throw new IllegalArgumentException("Ingresar correctamente el mes");
+            
+        return gananciasPorMes[mes];
     }
 
     /**
@@ -56,6 +82,12 @@ public class Ventas {
      */
     public void cambiarPrecio(float nuevoPrecio) {
        //Implementar metodo
+       if(nuevoPrecio < 0) {
+           throw new IllegalArgumentException("El nuevo precio debe ser mayor a cero");
+       } else {
+           precioProducto = nuevoPrecio; 
+       }
+       
     }
 
     /**
@@ -63,14 +95,38 @@ public class Ventas {
      */
     private boolean repOK() {
         //Implementar metodo
-        return false;
+        boolean ok = true;
+        if(precioProducto <= 0) {
+            ok = false;
+        }
+        
+        if(diaActual < 0 || diaActual > MAX_DIAS) {
+            ok = false;
+        }
+        
+        if(mesActual < 0 || mesActual > MESES) {
+            ok = false;
+        }
+        
+        if(ventasPorDia.length != MAX_DIAS) {
+            ok = false;
+        }
+        
+        if(gananciasPorMes.length != MESES) {
+            ok = false;
+        }
+        return ok;
     }
 
     /**
      * Este metodo reinicia las ventas por dia.  
      */
-    public void reiniciarVentas() {
+    private void reiniciarVentas() {
         //Implementar metodo
+        for(int i = 0; i < ventasPorDia.length; i++) {
+            ventasPorDia[i] = 0;
+        }
+        diaActual = 0;
     }
 }
 
