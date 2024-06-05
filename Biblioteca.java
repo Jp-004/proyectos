@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Tiene la capacidad de almacenar libros, buscar libros por su titulo, prestar libros y devolver libros.
  * 
  * @author J.Pereno
- * @version 1.0 
+ * @version 1.1.2
  * @date 04/06/2024
  */
 
