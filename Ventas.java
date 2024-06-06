@@ -26,7 +26,7 @@ public class Ventas {
     }
 
     /**
-     * Este metodo registra las ventas de un dia especifico.
+     * Este metodo registra la cantidad de productos vendidios en un dia especifico.
      * El dia debe ser valido entre 1 y 30.
      * Se debe registrar la cantidad de productos vendidos ese dia.
      */
