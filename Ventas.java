@@ -4,7 +4,7 @@
  * Calcula las ganancias mensuales basadas en el precio del producto y la cantidad de ventas por dia.
  * 
  * @author J.Pereno
- * @version 1.0
+ * @version 1.2.1
  * @date 05/06/2024
  */
 public class Ventas {
@@ -40,7 +40,7 @@ public class Ventas {
             diaActual++;
         } else if(diaActual == MAX_DIAS) {
             calcularGanancias();
-            } 
+        } 
     }
 
     /**
@@ -49,20 +49,19 @@ public class Ventas {
      */
     private void calcularGanancias() {
         //Implementar metodo
-        if(diaActual != MAX_DIAS)
+        if(!repOK())
             throw new IllegalArgumentException("Las ganancias solo se pueden calcular al final del mes");
             
         int suma = 0;
         for(int i = 0; i < ventasPorDia.length; i++) {
             suma += ventasPorDia[i];
         }
+        
         if(suma != 0) {
             gananciasPorMes[mesActual] = suma * precioProducto;
             mesActual++;
             reiniciarVentas();
         } 
-        
-        
     }
 
     /**
@@ -70,7 +69,7 @@ public class Ventas {
      */
     public float obtenerGanancias(int mes) {
         //Implementar metodo
-        if(mes < 0)
+        if(!repOK())
             throw new IllegalArgumentException("Ingresar correctamente el mes");
             
         return gananciasPorMes[mes];
