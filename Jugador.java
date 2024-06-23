@@ -18,6 +18,9 @@ public class Jugador {
      */
     public Jugador(String nombre) {
         //Implementar chequeo de precondicion 
+        if (nombre == null || nombre.length() == 0) 
+            throw new IllegalArgumentException("El nombre no debe ser nulo ni vacio");
+        
         this.nombre = nombre;
         this.puntuacion = 0;
     }
@@ -42,6 +45,9 @@ public class Jugador {
      */
     public void setPuntuacion(int puntuacion) {
         //Implementar chequeo de precondicion
+        if (puntuacion < 0) 
+            throw new IllegalArgumentException("La nueva puntuacion no debe ser negativa"); 
+            
         this.puntuacion = puntuacion;
     }
     
@@ -51,6 +57,9 @@ public class Jugador {
      */
     public void incrementarPuntuacion(int puntos) {
         //Implementar chequeo de precondicion
+        if (puntos < 0) 
+            throw new IllegalArgumentException("Los puntos a incrementar no deben ser negativos");
+            
         this.puntuacion += puntos;
     }
     
@@ -62,6 +71,7 @@ public class Jugador {
      */
     public boolean repOK() {
         //Implementar metodo
+        if (nombre == null || nombre.length() == 0) 
         return false;
     }
 

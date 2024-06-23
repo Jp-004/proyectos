@@ -41,7 +41,7 @@ public class Juego {
      * Solamente puede recibir nombres validos. 
      */
     public Jugador obtenerJugador(String nombre) {
-        //Implementar chequeo de precondicion 
+        //Implementar metodo y chequeo de precondicion 
         return null;
     }
 
@@ -50,7 +50,7 @@ public class Juego {
      * Solamente funciona si la lista de jugadores no es vacia. 
      */
     public Jugador obtenerGanador() {
-        //Implementar chequeo de precondicion 
+        //Implementar metodo y chequeo de precondicion 
         return null;
     }
     
@@ -69,7 +69,7 @@ public class Juego {
      * Si la lista <jugadores> contiene menos de 3 jugadores el metodo no funciona. 
      */
     public Jugador[] obtenerTop3Jugadores() {
-        //Implementar chequeo de precondicion
+        //Implementar metodo y chequeo de precondicion
         return null;
     }
 
@@ -88,6 +88,7 @@ public class Juego {
      * De lo contrario retorna true. 
      */
     public boolean repOK() {
+        //Implementar metodo
         return false;
     }
 }
