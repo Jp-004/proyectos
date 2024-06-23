@@ -1,96 +1,83 @@
+import java.util.ArrayList;
 
-import java.util.ArrayList; 
 /**
- * La clase Bilbioteca tiene la funcion de representar una biblioteca.
- * Tiene la capacidad de almacenar libros, buscar libros por su titulo, prestar libros y devolver libros.
+ * Representa una biblioteca que contiene una colección de libros.
+ * Permite gestionar los libros y su estado de préstamo.
  * 
- * @author J.Pereno
- * @version 1.1.2
- * @date 04/06/2024
+ * @autor J.Pereno 
+ * @version 0.1
+ * @fecha 23/06/2024
  */
-
 public class Biblioteca {
-    private String[] libros;
-    private int cantidadLibros;
+    private ArrayList<Libro> libros;
 
-    public Biblioteca(int capacidadMaxima) {
-        libros = new String[capacidadMaxima];
-        cantidadLibros = 0;
+    /**
+     * Constructor de la clase Biblioteca.
+     * Crea una biblioteca vacía.
+     */
+    public Biblioteca() {
+        libros = new ArrayList<>();
+    }
+
+    /**
+     * Agrega un nuevo libro a la biblioteca.
+     * El libro no debe ser nulo y debe cumplir con su invariante de clase.
+     */
+    public void agregarLibro(Libro libro) {
+        //Implementar chequeo de precondicion
+        libros.add(libro);
+    }
+
+    /**
+     * Verifica si un libro está prestado, dado su nombre.
+     * El nombre debe ser válido (ni nulo ni vacio).
+     * Si el libro no se encuentra se lanza una excepcion. 
+     */
+    public boolean libroEstaPrestado(String nombre) {
+        //Implementar metodo y chequeo de precondicion
+        return false;
+    }
+
+    /**
+     * Retorna la cantidad de libros dentro de la Biblioteca. 
+     */
+     public int cantidadLibros() {
+        return libros.size();
     }
     
     /**
-     * Este metodo debe agregar un libro a la biblioteca.
-     * Para agregar un libro, la biblioteca no debe estar llena.
+     * Presta un libro, dado su nombre.
+     * El nombre debe ser válido y el libro debe estar en la biblioteca.
      */
-    public void agregarLibro(String titulo) {
-        if(cantidadLibros < libros.length) {
-            libros[cantidadLibros] = titulo;
-            cantidadLibros++;
-        } else {
-            throw new IllegalArgumentException("Capacidad agotada, no se pueden agregar mas libros");
-        }
+    public void prestarLibro(String nombre) {
+        //Implementar metodo y chequeo de precondicion 
     }
 
     /**
-     * Este metodo busca un libro por su titulo en la biblioteca.
-     * Devuelve true si la biblioteca dispone de este libro, de lo contrario devuelve false.
+     * Devuelve un libro, dado su nombre.
+     * El nombre debe ser válido y el libro debe estar en la biblioteca.
+     * De lo contrario lanza una excepcion. 
      */
-    public boolean buscarLibro(String titulo) {
-        if(titulo == null)
-            throw new IllegalArgumentException("El titulo del libro a buscar no debe ser nulo");
-        boolean buscar = false;
-        int i = 0;
-        while(i < cantidadLibros) {
-            if(libros[i].equals(titulo)){
-                buscar = true;
-            } 
-            i++;
-        }
-        return buscar; 
+    public void devolverLibro(String nombre) {
+        //Implementar metodo y chequeo de precondicion 
     }
 
     /**
-     * Este metodo presta un libro de la biblioteca.
-     * Para prestar un libro, este debe encontrarse dispoible en la biblioteca.
-     * El libro sera marcado como "prestado".
-     * La cantidad de libros disponibles disminuye en 1.
+     * Invariante de clase.
+     * Verifica que todos los libros en la biblioteca cumplan con su invariante de clase.
      */
-    public boolean prestarLibro(String titulo) {
-        if(titulo == null)
-            throw new IllegalArgumentException("El libro no debe ser nulo");
-            
-        boolean condicion = false;
-        
-        for(int i = 0; i < cantidadLibros; i++){
-            if(libros[i].equals(titulo)) {
-                for(int j = i; j < cantidadLibros - 1; j++) {
-                    libros[j] = libros[j + 1];
-                }
-                libros[cantidadLibros - 1] = null;
-                cantidadLibros--;
-                condicion = true;
-            }
-        }
-        return condicion; 
+    public boolean repOK() {
+        //Implementar metodo
+        return false;
     }
 
     /**
-     * Este metodo devuelve un libro a la biblioteca.
-     * Para devolver un libro, este debe estar prestado. 
-     * El libro sera marcado como "disponible".
-     * La cantidad de libros disponibles en la biblioteca se incrementa en 1.
+     * Retorna una representación en cadena de la biblioteca.
+     * Retorna cada libro dentro de la Biblioteca. 
      */
-    public boolean devolverLibro(String titulo) {
-        if(titulo == null)
-            throw new IllegalArgumentException("El libro no debe ser nulo");
-            
-        boolean condicion = false;
-        if(cantidadLibros < libros.length){
-            libros[cantidadLibros] = titulo;
-            cantidadLibros++;
-            condicion = true;
-        }
-        return condicion; 
+    public String toString() {
+        //Implementar metodo 
+        return ""; 
     }
-
 }
+
